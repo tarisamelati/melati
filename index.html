@@ -1,0 +1,570 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BeautySky | Review Makeup Lokal</title>
+
+  <style>
+    :root {
+      --sky: #38bdf8;
+      --sky-dark: #0284c7;
+      --sky-light: #e0f2fe;
+      --navy: #075985;
+      --white: #ffffff;
+      --text: #334155;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #f5fbff;
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    header {
+      background: rgba(255, 255, 255, 0.96);
+      padding: 16px 8%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      box-shadow: 0 3px 15px #0284c710;
+    }
+
+    .logo {
+      font-size: 26px;
+      font-weight: bold;
+      color: var(--sky-dark);
+    }
+
+    nav {
+      display: flex;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--navy);
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      color: var(--sky);
+    }
+
+    .hero {
+      padding: 75px 8%;
+      text-align: center;
+      background: linear-gradient(135deg, #bae6fd, #effaff, #dbeafe);
+    }
+
+    .hero h1 {
+      font-size: clamp(32px, 5vw, 48px);
+      color: var(--navy);
+      line-height: 1.2;
+      margin-bottom: 20px;
+    }
+
+    .hero p {
+      max-width: 600px;
+      margin: 0 auto 25px;
+      color: #475569;
+    }
+
+    .btn {
+      display: inline-block;
+      background: var(--sky-dark);
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 30px;
+      text-decoration: none;
+      cursor: pointer;
+      font-size: 15px;
+      font-weight: bold;
+    }
+
+    .btn:hover {
+      background: var(--navy);
+    }
+
+    section {
+      padding: 55px 8%;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 30px;
+      color: var(--navy);
+      font-size: 30px;
+    }
+
+    .toolbar {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 30px;
+    }
+
+    input, select, textarea {
+      padding: 12px 15px;
+      border: 1px solid #bae6fd;
+      border-radius: 12px;
+      font: inherit;
+      background: white;
+      width: 100%;
+    }
+
+    .toolbar input {
+      max-width: 360px;
+    }
+
+    .toolbar select {
+      max-width: 220px;
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 24px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 5px 22px #0284c710;
+      transition: transform 0.25s;
+      border: 1px solid #e0f2fe;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+    }
+
+    .product-art {
+      height: 180px;
+      display: grid;
+      place-items: center;
+      font-size: 65px;
+      background: linear-gradient(135deg, #e0f2fe, #fce7f3);
+    }
+
+    .card-content {
+      padding: 20px;
+    }
+
+    .tag {
+      display: inline-block;
+      color: #0369a1;
+      background: #e0f2fe;
+      border-radius: 20px;
+      padding: 4px 10px;
+      font-size: 12px;
+      margin-bottom: 10px;
+    }
+
+    .card h3 {
+      color: var(--navy);
+      margin-bottom: 5px;
+    }
+
+    .price {
+      font-weight: bold;
+      margin: 8px 0;
+    }
+
+    .stars {
+      color: #f59e0b;
+      letter-spacing: 2px;
+    }
+
+    .review-text {
+      font-size: 14px;
+      margin: 10px 0 15px;
+      color: #64748b;
+    }
+
+    .card .btn {
+      width: 100%;
+      text-align: center;
+    }
+
+    .empty {
+      grid-column: 1 / -1;
+      text-align: center;
+      padding: 30px;
+      background: white;
+      border-radius: 15px;
+    }
+
+    .review-section {
+      background: #eaf7ff;
+    }
+
+    .review-form {
+      max-width: 600px;
+      margin: auto;
+      background: white;
+      padding: 28px;
+      border-radius: 20px;
+      box-shadow: 0 5px 20px #0284c710;
+      display: grid;
+      gap: 15px;
+    }
+
+    .review-form label {
+      font-weight: bold;
+      color: var(--navy);
+    }
+
+    .field {
+      display: grid;
+      gap: 6px;
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 100px;
+    }
+
+    footer {
+      text-align: center;
+      background: #075985;
+      color: white;
+      padding: 28px 8%;
+    }
+
+    footer p + p {
+      margin-top: 5px;
+      font-size: 13px;
+      color: #bae6fd;
+    }
+
+    @media (max-width: 800px) {
+      header {
+        flex-direction: column;
+      }
+
+      nav {
+        justify-content: center;
+        gap: 15px;
+      }
+
+      .product-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 520px) {
+      .product-grid {
+        grid-template-columns: 1fr;
+      }
+
+      section {
+        padding: 40px 6%;
+      }
+
+      .hero {
+        padding: 55px 6%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="logo">☁ BeautySky</div>
+    <nav>
+      <a href="#home">Beranda</a>
+      <a href="#produk">Produk</a>
+      <a href="#review">Tulis Review</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <h1>Glow Cantik dengan<br>Makeup Lokal Indonesia ✨</h1>
+      <p>
+        Temukan rekomendasi makeup lokal, baca review,
+        dan bagikan pengalaman produk favoritmu.
+        Cantik nggak harus mahal!
+      </p>
+      <a href="#produk" class="btn">Jelajahi Produk</a>
+    </section>
+
+    <section id="produk">
+      <h2 class="section-title">💙 Review Produk Pilihan</h2>
+
+      <div class="toolbar">
+        <input
+          type="search"
+          id="search"
+          placeholder="Cari nama produk atau brand..."
+          aria-label="Cari produk"
+        >
+
+        <select id="category" aria-label="Filter kategori">
+          <option value="Semua">Semua Kategori</option>
+          <option value="Lipstik">Lipstik</option>
+          <option value="Bedak">Bedak</option>
+          <option value="Blush">Blush On</option>
+          <option value="Skincare">Skincare</option>
+          <option value="Foundation">Foundation</option>
+        </select>
+      </div>
+
+      <div class="product-grid" id="productGrid"></div>
+    </section>
+
+    <section class="review-section" id="review">
+      <h2 class="section-title">💌 Tulis Review Kamu</h2>
+
+      <form class="review-form" id="reviewForm">
+        <div class="field">
+          <label for="productName">Nama produk</label>
+          <input
+            id="productName"
+            required
+            placeholder="Contoh: Wardah Lip Cream"
+          >
+        </div>
+
+        <div class="field">
+          <label for="brand">Brand lokal</label>
+          <input
+            id="brand"
+            required
+            placeholder="Contoh: Wardah"
+          >
+        </div>
+
+        <div class="field">
+          <label for="rating">Rating</label>
+          <select id="rating" required>
+            <option value="5">★★★★★ - Sangat suka</option>
+            <option value="4">★★★★☆ - Suka</option>
+            <option value="3">★★★☆☆ - Biasa saja</option>
+            <option value="2">★★☆☆☆ - Kurang suka</option>
+            <option value="1">★☆☆☆☆ - Tidak suka</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="reviewText">Pengalaman kamu</label>
+          <textarea
+            id="reviewText"
+            required
+            placeholder="Ceritakan tekstur, warna, ketahanan, dan pengalamanmu..."
+          ></textarea>
+        </div>
+
+        <button type="submit" class="btn">Kirim Review 💙</button>
+        <p id="formMessage" role="status"></p>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <h3>☁ BeautySky</h3>
+    <p>Local Beauty, Honest Reviews.</p>
+    <p>© 2026 BeautySky. Dibuat dengan 💙 di Indonesia.</p>
+  </footer>
+
+  <script>
+    const products = [
+      {
+        name: "Wardah Colorfit",
+        brand: "Wardah",
+        category: "Lipstik",
+        price: "Rp65.000",
+        rating: 4,
+        icon: "💄",
+        description:
+          "Pilihan warna untuk melengkapi makeup sehari-hari."
+      },
+      {
+        name: "Emina Cheek Lit",
+        brand: "Emina",
+        category: "Blush",
+        price: "Rp35.000",
+        rating: 5,
+        icon: "🌸",
+        description:
+          "Blush dengan warna ceria untuk tampilan fresh."
+      },
+      {
+        name: "Make Over Powder",
+        brand: "Make Over",
+        category: "Bedak",
+        price: "Rp95.000",
+        rating: 4,
+        icon: "🪞",
+        description:
+          "Bedak untuk melengkapi riasan wajah."
+      },
+      {
+        name: "Luxcrime Foundation",
+        brand: "Luxcrime",
+        category: "Foundation",
+        price: "Rp119.000",
+        rating: 5,
+        icon: "🧴",
+        description:
+          "Pilihan complexion untuk tampilan makeup."
+      },
+      {
+        name: "Azarine Sunscreen",
+        brand: "Azarine",
+        category: "Skincare",
+        price: "Rp65.000",
+        rating: 5,
+        icon: "☀️",
+        description:
+          "Perlindungan matahari untuk rutinitas pagi."
+      },
+      {
+        name: "Hanasui Lip Tint",
+        brand: "Hanasui",
+        category: "Lipstik",
+        price: "Rp30.000",
+        rating: 4,
+        icon: "💋",
+        description:
+          "Pilihan lip tint untuk tampilan bibir berwarna."
+      }
+    ];
+
+    const grid = document.getElementById("productGrid");
+    const search = document.getElementById("search");
+    const category = document.getElementById("category");
+
+    function renderProducts() {
+      const keyword = search.value.toLowerCase().trim();
+      const selected = category.value;
+
+      const filtered = products.filter(product => {
+        const matchesSearch =
+          product.name.toLowerCase().includes(keyword) ||
+          product.brand.toLowerCase().includes(keyword);
+
+        const matchesCategory =
+          selected === "Semua" ||
+          product.category === selected;
+
+        return matchesSearch && matchesCategory;
+      });
+
+      grid.innerHTML = "";
+
+      if (filtered.length === 0) {
+        grid.innerHTML = `
+          <p class="empty">
+            Produk tidak ditemukan. Coba kata kunci lain ya! 💙
+          </p>`;
+        return;
+      }
+
+      filtered.forEach(product => {
+        const stars = "★".repeat(product.rating) +
+                      "☆".repeat(5 - product.rating);
+
+        const card = document.createElement("article");
+        card.className = "card";
+
+        const art = document.createElement("div");
+        art.className = "product-art";
+        art.textContent = product.icon;
+        art.setAttribute("aria-hidden", "true");
+
+        const content = document.createElement("div");
+        content.className = "card-content";
+
+        const tag = document.createElement("span");
+        tag.className = "tag";
+        tag.textContent = product.category;
+
+        const title = document.createElement("h3");
+        title.textContent = product.name;
+
+        const brand = document.createElement("p");
+        brand.textContent = product.brand;
+
+        const price = document.createElement("p");
+        price.className = "price";
+        price.textContent = product.price;
+
+        const rating = document.createElement("p");
+        rating.className = "stars";
+        rating.textContent = stars + " (" + product.rating + "/5)";
+
+        const description = document.createElement("p");
+        description.className = "review-text";
+        description.textContent = product.description;
+
+        const button = document.createElement("a");
+        button.className = "btn";
+        button.href = "#review";
+        button.textContent = "Tulis Review";
+
+        content.append(
+          tag, title, brand, price, rating, description, button
+        );
+
+        card.append(art, content);
+        grid.appendChild(card);
+      });
+    }
+
+    search.addEventListener("input", renderProducts);
+    category.addEventListener("change", renderProducts);
+
+    document.getElementById("reviewForm").addEventListener(
+      "submit",
+      function(event) {
+        event.preventDefault();
+
+        const name =
+          document.getElementById("productName").value.trim();
+        const brand =
+          document.getElementById("brand").value.trim();
+        const rating =
+          document.getElementById("rating").value;
+        const review =
+          document.getElementById("reviewText").value.trim();
+
+        if (!name || !brand || !review) return;
+
+        const message = document.getElementById("formMessage");
+        message.style.color = "#0284c7";
+        message.textContent =
+          "Terima kasih! Review " + name +
+          " dari " + brand + " berhasil ditampilkan sebagai demo. 💙";
+
+        // Demo ini belum menyimpan review ke server.
+        // Untuk website sungguhan, hubungkan ke backend/database.
+        this.reset();
+      }
+    );
+
+    renderProducts();
+  </script>
+</body>
+</html>
